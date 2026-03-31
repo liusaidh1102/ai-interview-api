@@ -156,9 +156,9 @@ sms:
     territory: ap-guangzhou
 
 casdoor:
-  endpoint: https://cas.ruanzhuinfo.com
+  endpoint: https://cas.coderliu.top
   client-id: 561826f0717c4ee9b88d
-  client-secret: aa4329f0e2eeb59ebe4a3058860445ea3a2a9885
+  client-secret: aa4329f0e2eeb59ebe4a3058860445ea3a2a9879
   certificate: |
     -----
   organization-name: built-in
