@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interview.system.mapper.BMianshiDetailMapper">
+
+    <resultMap type="com.interview.system.domain.BMianshiDetail" id="BMianshiDetailResult">
+        <result property="id" column="id"/>
+        <result property="humanUrl" column="human_url"/>
+        <result property="humanText" column="human_text"/>
+        <result property="msUrl" column="ms_url"/>
+        <result property="msText" column="ms_text"/>
+        <result property="humanDuration" column="human_duration"/>
+        <result property="msDuration" column="ms_duration"/>
+        <result property="answerText" column="answer_text"/>
+        <result property="score" column="score"/>
+        <result property="flag" column="flag"/>
+        <result property="msId" column="ms_id"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>

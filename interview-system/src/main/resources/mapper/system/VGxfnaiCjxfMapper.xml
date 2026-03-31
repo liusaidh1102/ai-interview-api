@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interview.system.mapper.VGxfnaiCjxfMapper">
+    <resultMap type="com.interview.system.domain.VGxfnaiCjxf" id="VGxfnaiCjxfResult">
+        <result property="studentId" column="student_id"/>
+        <result property="courseId" column="course_id"/>
+        <result property="credit" column="credit"/>
+        <result property="score" column="score"/>
+        <result property="gradeYear" column="grade_year"/>
+        <result property="gradeTerm" column="grade_term"/>
+    </resultMap>
+
+    <select id="getSameGradeStu" resultType="java.lang.Long">
+        SELECT student_id
+        from v_gxfnai_xsjbxx
+        where Speciality_id = #{specialityId};
+    </select>
+
+
+<!--    <select id="getRanking" resultType="com.aiUniversity.system.domain.bo.RankingBo">-->
+<!--        SELECT c.student_id,-->
+<!--               c.grade_year,-->
+<!--               c.grade_term,-->
+<!--               SUM(c.score) AS total_score-->
+<!--        FROM v_gxfnai_cjxf c-->
+<!--        WHERE c.student_id in (SELECT a.student_id-->
+<!--                               from v_gxfnai_xsjbxx a-->
+<!--                               where Speciality_id = #{specialityId} and a.student_id like concat(substr(#{studentId},1,4),'%'))-->
+<!--        GROUP BY c.student_id, c.grade_year, c.grade_term-->
+<!--    </select>-->
+
+<!--    <select id="getDataByGrade" resultType="com.aiUniversity.system.domain.vo.ScoreVO">-->
+<!--        select c.course_id,-->
+<!--               k.course_name,-->
+<!--               c.score-->
+<!--        from v_gxfnai_cjxf c-->
+<!--                 join v_gxfnai_kcxx k on c.course_id = k.course_id-->
+<!--        where c.student_id = #{studentId}-->
+<!--          and c.grade_year = #{gradeYear}-->
+<!--    </select>-->
+<!--    <select id="selectCourse" resultType="com.aiUniversity.system.domain.vo.AnalyseVO">-->
+<!--        select j.credit,-->
+<!--               c.course_name,-->
+<!--               j.score-->
+<!--        from v_gxfnai_cjxf j-->
+<!--                 join v_gxfnai_kcxx c on (c.course_id = j.course_id and-->
+<!--                                          c.grade_year = j.grade_year and-->
+<!--                                          c.grade_term = j.grade_term)-->
+<!--        where j.student_id = #{studentId} and c.speciality_id = #{specialityId}-->
+<!--    </select>-->
+<!--    <select id="getDataByYear" resultType="com.aiUniversity.system.domain.bo.RankingBo">-->
+<!--        SELECT c.student_id,-->
+<!--               SUM(c.score) AS total_score-->
+<!--        FROM v_gxfnai_cjxf c-->
+<!--        WHERE c.student_id in (SELECT a.student_id-->
+<!--                               from v_gxfnai_xsjbxx a-->
+<!--                               where Speciality_id = #{specialityId} and a.student_id like concat(substr(#{studentId},1,4),'%'))-->
+<!--          and c.grade_year = #{year} and c.grade_term = #{term}-->
+<!--        GROUP BY c.student_id ORDER BY total_score desc-->
+<!--    </select>-->
+</mapper>

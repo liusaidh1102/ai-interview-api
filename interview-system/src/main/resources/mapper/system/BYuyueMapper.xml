@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.interview.system.mapper.BYuyueMapper">
+
+    <resultMap type="com.interview.system.domain.BYuyue" id="BYuyueResult">
+        <result property="id" column="id"/>
+        <result property="yyTime" column="yy_time"/>
+        <result property="jobsId" column="jobs_id"/>
+        <result property="jianliId" column="jianli_id"/>
+        <result property="msId" column="ms_id"/>
+        <result property="qiyeId" column="qiye_id"/>
+        <result property="qiyeName" column="qiye_name"/>
+        <result property="userFullname" column="user_fullname"/>
+        <result property="msType" column="ms_type"/>
+        <result property="msStatus" column="ms_status"/>
+        <result property="jobsTitle" column="jobs_title"/>
+        <result property="msTitle" column="ms_title"/>
+        <result property="unionUserId" column="union_user_id"/>
+        <result property="resumePostId" column="resume_post_id"/>
+        <result property="delFlag" column="del_flag"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+</mapper>
