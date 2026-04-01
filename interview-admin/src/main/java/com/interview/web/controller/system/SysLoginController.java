@@ -86,35 +86,6 @@ public class SysLoginController {
     private SysLoginService sysLoginService;
 
 
-//     /**
-//      * cas 单点登录
-//      * @param request
-//      */
-//     @GetMapping(value = "/hkyLogin")
-//     @SaIgnore
-//     public void loginByNameAndCardNo(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//         log.info("开始登录");
-//         //如果没有登录，则返回抛出异常
-// //        request.getParameterMap().containsKey("username");
-
-//         Assertion assertion = (Assertion) request.getSession().getAttribute(AbstractCasFilter.CONST_CAS_ASSERTION);
-//         if(assertion == null){
-//             throw NotLoginException.newInstance(String.valueOf(1), NOT_TOKEN, NOT_TOKEN_MESSAGE, null).setCode(SaErrorCode.CODE_11011);
-//         }
-//         //1.解析username
-//         String username = assertion.getPrincipal().getName();
-//         LoginUser loginUser;
-//         VGxfnaiRsxx vGxfnaiRsxx = new VGxfnaiRsxx(1L,"张三","教授","教授","部门","1");
-//         loginUser = builderLoginUser(vGxfnaiRsxx);
-//         //3.构建loginuser
-//         LoginHelper.loginByDevice(loginUser , DeviceType.PC);
-//         // 获取token
-//         String loginToken = StpUtil.getTokenValue();
-//         // 生成令牌
-//         log.info("当前用户token：{}",loginToken);
-//         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-//         response.sendRedirect("http://10.104.64.6:3000/login?token=" +loginToken);
-//     }
 
 /**
      * cas 单点登录
@@ -124,27 +95,10 @@ public class SysLoginController {
     @SaIgnore
     public void loginByNameAndCardNo(HttpServletRequest request, HttpServletResponse response,String signUrl) throws IOException {
         log.info("开始登录");
-//         Assertion assertion = (Assertion) request.getSession().getAttribute(AbstractCasFilter.CONST_CAS_ASSERTION);
-//         if(assertion == null){
-//             throw NotLoginException.newInstance(String.valueOf(1), NOT_TOKEN, NOT_TOKEN_MESSAGE, null).setCode(SaErrorCode.CODE_11011);
-//         }
-        //1.解析username
-        // String studentId = assertion.getPrincipal().getName();
-
-        String studentId = "20231714422";
-
-
-
-        // Map<String, Object> attributes = assertion.getPrincipal().getAttributes();
-
-        // log.info("属性：{}",attributes);
-
-        // 获取昵称
-        // String nickName = (String) attributes.get("comsys_realname");
-        String nickName = "刘志文";
-        log.info("昵称：{}",nickName);
-
-        log.info("学号：{}",studentId);
+        // 后两位随机生成，模拟假登录
+        int num = 10 + (int)(Math.random() * 21);
+        String studentId = "202317144" + num;
+        String nickName = "学生" + num;
 
         SysUser sysUser = userService.selectUserByUserName(studentId);
         if (ObjectUtil.isNull(sysUser)){
@@ -173,32 +127,13 @@ public class SysLoginController {
     @GetMapping("getInfo")
     public R<Map<String, Object>> getInfo() {
         LoginUser loginUser = LoginHelper.getLoginUser();
-//        SysUser user = userService.selectUserById(loginUser.getUserId());
         SysUser user = new SysUser();
         user.setNickName(loginUser.getNickName());
         Map<String, Object> ajax = new HashMap<>();
         ajax.put("user", user);
-//        ajax.put("roles", loginUser.getRolePermission());
-//        ajax.put("permissions", loginUser.getMenuPermission());
         return R.ok(ajax);
     }
 
-
-//    /**
-//     * 获取用户信息
-//     *
-//     * @return 用户信息
-//     */
-//    @GetMapping("getInfo")
-//    public R<Map<String, Object>> getInfo() {
-//        LoginUser loginUser = LoginHelper.getLoginUser();
-//        SysUser user = userService.selectUserById(loginUser.getUserId());
-//        Map<String, Object> ajax = new HashMap<>();
-//        ajax.put("user", user);
-//        ajax.put("roles", loginUser.getRolePermission());
-//        ajax.put("permissions", loginUser.getMenuPermission());
-//        return R.ok(ajax);
-//    }
 
 
     @RequestMapping("toLogin")
