@@ -2,6 +2,21 @@
 <div style="height: 10px; clear: both;"></div>
 
 - - -
+## 项目部分截图
+### APP
+<img width="563" height="1001" alt="login" src="https://github.com/user-attachments/assets/06e43ea3-aea4-46d3-8dc3-011eec906e7b" />
+<img width="3600" height="6400" alt="app" src="https://github.com/user-attachments/assets/738e119b-714c-4bcb-8582-0aefe47ed7e9" />
+
+### AI面试
+<img width="563" height="1004" alt="image" src="https://github.com/user-attachments/assets/b7e3992f-1f93-406d-8b40-cf4c553bb3f7" />
+<img width="563" height="981" alt="image" src="https://github.com/user-attachments/assets/e0b65722-7998-45cf-80f6-1ebee20fce0d" />
+<img width="563" height="1001" alt="image" src="https://github.com/user-attachments/assets/30d8f06c-2d57-4fa5-b734-8e0bf2de2d27" />
+<img width="563" height="1001" alt="image" src="https://github.com/user-attachments/assets/aa04a077-ef0d-46b4-b329-f795a8b3f985" />
+<img width="340" height="1312" alt="image" src="https://github.com/user-attachments/assets/40816458-90c0-446e-9544-e17130fc298a" />
+
+
+### 后台
+略
 
 ## 版本状态说明
 
