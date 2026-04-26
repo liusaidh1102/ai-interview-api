@@ -76,7 +76,7 @@ spring:
     # 端口，默认为6379
     port: 6379
     # 数据库索引
-    database: 2
+    database: 0
     # 密码(如没有密码请注释掉)
     password: 123456
     # 连接超时时间
@@ -105,6 +105,50 @@ redisson:
     timeout: 3000
     # 发布和订阅连接池大小
     subscriptionConnectionPoolSize: 50
+
+--- # RabbitMQ 配置
+spring:
+  rabbitmq:
+    # RabbitMQ 服务器地址
+    host: localhost
+    # RabbitMQ 服务器端口
+    port: 5672
+    # 用户名
+    username: admin
+    # 密码
+    password: 123456
+    # 虚拟主机
+    virtual-host: ai-mianshi
+    # 连接超时时间
+    connection-timeout: 15000
+    # 生产者确认机制
+    publisher-confirm-type: correlated # 开启publisher confirm机制，并且设置confirm的类型
+    #    三种模式：none: 关闭confirm模式；simple：同步阻塞等待mq的回执；correlated：异步接收mq的回执
+    publisher-returns: true # 开启publisher return机制
+    # 生产者重试机制（阻塞式的等待）
+    template:
+      retry:
+        enabled: true # 开启超时重试机制
+        initial-interval: 1000ms # 失败后的初始等待时间
+        multiplier: 1 # 失败后下次的等待时长倍数，下次等待时长 = initial-interval * multiplier
+        max-attempts: 3 # 最大重试次数
+
+
+
+    # 消费者配置
+    listener:
+      simple:
+        # 最小消费者数量
+        concurrency: 1
+        # 最大消费者数量
+        max-concurrency: 10
+        # 每次从队列中取出的消息数
+        # 消费者最多能有一条unacknowledged的消息，acknowledge-mode设置为manual时生效
+        prefetch: 1
+        # 开启手动确认消息模式
+        acknowledge-mode: manual
+        # 消费失败后是否重新入队
+        default-requeue-rejected: false
 
 --- # mail 邮件发送
 mail:

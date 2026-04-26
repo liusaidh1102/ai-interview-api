@@ -44,6 +44,8 @@
         <aws-java-sdk-s3.version>1.12.540</aws-java-sdk-s3.version>
         <!-- SMS 配置 -->
         <sms4j.version>2.2.0</sms4j.version>
+        <!-- RabbitMQ 配置 -->
+        <spring-boot-amqp.version>2.7.18</spring-boot-amqp.version>
     </properties>
 
     <profiles>
@@ -108,6 +110,12 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-javadoc</artifactId>
                 <version>${springdoc.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>${spring-boot-amqp.version}</version>
             </dependency>
 
             <dependency>

@@ -144,6 +144,7 @@ public class BMianshiDetailServiceImpl implements IBMianshiDetailService {
                 JSONObject inputs = new JSONObject();
                 inputs.set("interview", update.getMsContent());
                 data.set("inputs", inputs);
+                // eg：Java实习生
                 data.set("query", update.getTitle());
                 data.set("response_mode", "blocking");
                 data.set("user", "java-mianshiai2");

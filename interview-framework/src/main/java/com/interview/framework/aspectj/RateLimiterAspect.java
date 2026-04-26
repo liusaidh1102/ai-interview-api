@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
- * 限流处理
+ * 限流处理（令牌桶限流）
  *
  * @author Lion Li
  */

@@ -1,6 +1,7 @@
 package com.interview;
 
 import net.unicon.cas.client.configuration.EnableCasClient;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
@@ -14,6 +15,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 // @EnableCasClient
+@EnableRabbit
 public class InterviewApplication {
 
     public static void main(String[] args) {

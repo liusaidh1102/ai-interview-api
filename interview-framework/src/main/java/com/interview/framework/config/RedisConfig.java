@@ -1,7 +1,9 @@
 package com.interview.framework.config;
 
 import cn.hutool.core.util.ObjectUtil;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.interview.framework.config.properties.RedissonProperties;
 import com.interview.framework.handler.KeyPrefixHandler;
 import com.interview.framework.manager.PlusSpringCacheManager;
@@ -35,9 +37,15 @@ public class RedisConfig {
     @Bean
     public RedissonAutoConfigurationCustomizer redissonCustomizer() {
         return config -> {
+            // 克隆一个独立的 ObjectMapper，避免污染全局配置
+            ObjectMapper om = objectMapper.copy();
+            // 禁用将类型信息写入 JSON，解决 Python 与 Java 之间的兼容性问题
+            om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+
             config.setThreads(redissonProperties.getThreads())
                 .setNettyThreads(redissonProperties.getNettyThreads())
-                .setCodec(new JsonJacksonCodec(objectMapper));
+                // 使用自定义的 ObjectMapper 构造新的编解码器
+                .setCodec(new JsonJacksonCodec(om));
             RedissonProperties.SingleServerConfig singleServerConfig = redissonProperties.getSingleServerConfig();
             if (ObjectUtil.isNotNull(singleServerConfig)) {
                 // 使用单机模式
